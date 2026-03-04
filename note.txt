@@ -1,0 +1,2 @@
+express is a minimal node js web framework 
+both service and building API
