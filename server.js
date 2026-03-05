@@ -6,7 +6,7 @@ const app = express();
 const port = 8080;
 
 //setup static folder -- is a middleware
-app.use(express.static(path.join(__dirname,'public')));
+// app.use(express.static(path.join(__dirname,'public')));
 
 // app.get('/',(req,res)=>{
 //     //  res.send('<h1>Hello world</h1>');
@@ -16,6 +16,16 @@ app.use(express.static(path.join(__dirname,'public')));
 //     // res.send('this is about');
 //     res.sendFile(path.join(__dirname,'public','about.html'));
 // })
+let posts = [
+    {id:1 , title:"post1"},
+    {id:2 , title:"post2"},
+    {id:3 , title:"post3"}
+]
+
+app.get('/api/posts',(req,res)=>{
+    res.json(posts);
+})
+
 
 app.listen(port,()=>{
     console.log(`server is running ${port}`);
