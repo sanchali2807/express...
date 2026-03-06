@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 //this app is basically used for everything 
-const port = 8080;
+const port = process.env.PORT||8000 ;
 
 //setup static folder -- is a middleware
 // app.use(express.static(path.join(__dirname,'public')));
