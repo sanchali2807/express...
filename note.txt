@@ -5,4 +5,4 @@ both service and building API
 express .static is an express middleware to server static files directly to the server 
 in exress for you to use env file you need to explicitly define the env file in package.json
 so you need to write --env-file=.env in dev or start 
-and need to make changes to package.json   for npm run dev or nodemon in start
+and need to make changes to package.json  like dev for npm run dev or nodemon in start
