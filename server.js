@@ -26,9 +26,9 @@ let posts = [
 app.get('/api/posts',(req,res)=>{
     const limit = parseInt(req.query.limit);
     if(!isNaN(limit) && limit > 0){
-        res.json(posts.slice(0,limit));
+        res.status(200).json(posts.slice(0,limit));
     }else{
-        res.json(posts);
+        res.status(200).json(posts);
     }
 })
 
@@ -38,10 +38,17 @@ app.get('/api/posts/:id',(req,res)=>{
     const id = parseInt(req.params.id);
     // res.json(posts[id-1]);
     // if we do this this statement is quite prone to error if there are any dis consistency in id number
-    
-    res.json(posts.filter((post)=>{
+    const post = posts.find((post)=>{
         return post.id === id;
-    }));
+    })
+    if(!post){
+        res.status(404).json({msg: `a post with the id of ${id} was not found`});
+    }else{
+        res.status(200).json(post);
+    }
+    // res.status(200).json(posts.filter((post)=>{
+    //     return post.id === id;
+    // }));
 })
 
 app.listen(port,()=>{
