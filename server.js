@@ -22,10 +22,20 @@ let posts = [
     {id:3 , title:"post3"}
 ]
 
+//get all posts
 app.get('/api/posts',(req,res)=>{
     res.json(posts);
 })
 
+//get a single post
+app.get('/api/posts/:id',(req,res)=>{
+    // console.log(req.params.id);
+    const id = parseInt(req.params.id);
+    res.json(posts[id-1]);
+    // res.json(posts.filter((post)=>{
+    //     return post.id === id;
+    // }));
+})
 
 app.listen(port,()=>{
     console.log(`server is running ${port}`);
