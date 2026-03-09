@@ -17,3 +17,5 @@ and need to make changes to package.json  like dev for npm run dev or nodemon in
 so we must use require with module.export this is common js language
 
 and import export is es module language 
+
+Router is a function predefined in express used to create modular routes , acts like a mini express handler that is then attched to main express using app.use
