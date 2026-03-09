@@ -24,17 +24,24 @@ let posts = [
 
 //get all posts
 app.get('/api/posts',(req,res)=>{
-    res.json(posts);
+    const limit = parseInt(req.query.limit);
+    if(!isNaN(limit) && limit > 0){
+        res.json(posts.slice(0,limit));
+    }else{
+        res.json(posts);
+    }
 })
 
 //get a single post
 app.get('/api/posts/:id',(req,res)=>{
     // console.log(req.params.id);
     const id = parseInt(req.params.id);
-    res.json(posts[id-1]);
-    // res.json(posts.filter((post)=>{
-    //     return post.id === id;
-    // }));
+    // res.json(posts[id-1]);
+    // if we do this this statement is quite prone to error if there are any dis consistency in id number
+    
+    res.json(posts.filter((post)=>{
+        return post.id === id;
+    }));
 })
 
 app.listen(port,()=>{
